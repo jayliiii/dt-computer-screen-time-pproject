@@ -24,6 +24,7 @@ function LED_on_2 () {
     pins.digitalWritePin(DigitalPin.P3, 0)
     pins.digitalWritePin(DigitalPin.P2, 0)
 }
+pins.setPull(DigitalPin.P4, PinPullMode.PullUp)
 pins.setAudioPin(AnalogPin.P3)
 servos.P0.setAngle(90)
 basic.forever(function () {
