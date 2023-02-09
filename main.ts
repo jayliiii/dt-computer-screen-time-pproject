@@ -1,9 +1,25 @@
+function Motornegative (num: number) {
+    pins.digitalWritePin(DigitalPin.P3, 1)
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    servos.P0.setAngle(0)
+    WaitForXMinutes(0.01)
+    pins.digitalWritePin(DigitalPin.P3, 0)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+}
 function LED_on_2 () {
     pins.digitalWritePin(DigitalPin.P3, 1)
     pins.digitalWritePin(DigitalPin.P2, 1)
     WaitForXMinutes(0.1)
     pins.digitalWritePin(DigitalPin.P3, 0)
     pins.digitalWritePin(DigitalPin.P2, 0)
+}
+function Motorpositive (num: number) {
+    pins.digitalWritePin(DigitalPin.P3, 1)
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    servos.P0.setAngle(180)
+    WaitForXMinutes(0.01)
+    pins.digitalWritePin(DigitalPin.P3, 0)
+    pins.digitalWritePin(DigitalPin.P1, 0)
 }
 function WaitForXMinutes (x: number) {
     for (let index = 0; index < x * 60; index++) {
@@ -18,23 +34,9 @@ function LED_on_1 () {
     pins.digitalWritePin(DigitalPin.P1, 0)
 }
 function Motoroff (num: number) {
-    pins.digitalWritePin(DigitalPin.P3, 1)
-    pins.digitalWritePin(DigitalPin.P1, 1)
-    pins.digitalWritePin(DigitalPin.P5, 1)
-    WaitForXMinutes(0.1)
-    pins.digitalWritePin(DigitalPin.P5, 0)
-    pins.digitalWritePin(DigitalPin.P3, 0)
-    pins.digitalWritePin(DigitalPin.P1, 0)
+    servos.P0.setAngle(90)
 }
-function Motoron (num: number) {
-    pins.digitalWritePin(DigitalPin.P3, 1)
-    pins.digitalWritePin(DigitalPin.P1, 1)
-    pins.digitalWritePin(DigitalPin.P0, 1)
-    WaitForXMinutes(0.1)
-    pins.digitalWritePin(DigitalPin.P0, 0)
-    pins.digitalWritePin(DigitalPin.P3, 0)
-    pins.digitalWritePin(DigitalPin.P1, 0)
-}
+servos.P0.setAngle(90)
 pins.setPull(DigitalPin.P4, PinPullMode.PullUp)
 pins.setAudioPin(AnalogPin.P3)
 basic.forever(function () {
@@ -49,7 +51,10 @@ basic.forever(function () {
                 LED_on_1()
             }
         }
-        Motoron(0)
+        Motorpositive(1)
+        Motoroff(1)
         WaitForXMinutes(0.1)
+        Motornegative(1)
+        Motoroff(1)
     }
 })
