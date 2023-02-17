@@ -12,7 +12,7 @@ function WaitForXMinutes (x: number) {
 }
 function motor_run () {
     pins.digitalWritePin(DigitalPin.P0, 1)
-    basic.pause(200)
+    basic.pause(5000)
     pins.digitalWritePin(DigitalPin.P0, 0)
 }
 function LED_on_1 () {
