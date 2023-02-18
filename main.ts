@@ -11,9 +11,9 @@ function WaitForXMinutes (x: number) {
     }
 }
 function motor_run () {
-    pins.digitalWritePin(DigitalPin.P0, 1)
+    servos.P0.setAngle(50)
     basic.pause(5000)
-    pins.digitalWritePin(DigitalPin.P0, 0)
+    servos.P0.setAngle(135)
 }
 function LED_on_1 () {
     pins.digitalWritePin(DigitalPin.P3, 1)
@@ -22,6 +22,7 @@ function LED_on_1 () {
     pins.digitalWritePin(DigitalPin.P3, 0)
     pins.digitalWritePin(DigitalPin.P1, 0)
 }
+servos.P0.setAngle(135)
 pins.setPull(DigitalPin.P4, PinPullMode.PullUp)
 pins.setAudioPin(AnalogPin.P3)
 basic.forever(function () {
